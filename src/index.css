@@ -1,0 +1,204 @@
+/* ============================================================
+   GLOBAL STYLES — Cabana-Book
+   Tailwind directives + CSS custom properties + global resets.
+   ============================================================ */
+
+/* Inject Tailwind's base reset, component classes, and utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS CUSTOM PROPERTIES ──────────────────────────────────
+   These variables let us change the theme in one place. */
+:root {
+  --color-bg:     #f0f2f5;
+  --color-card:   #ffffff;
+  --color-border: #dddfe2;
+  --color-text:   #1c1e21;
+  --color-muted:  #65676b;
+  --color-blue:   #3b93f3;
+  --nav-height:   56px;
+}
+
+/* ─── BASE RESETS ────────────────────────────────────────────*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;  /* Smooth anchor scrolling */
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;  /* Prevent horizontal overflow from slide animations */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ─── CUSTOM SCROLLBAR ───────────────────────────────────────*/
+::-webkit-scrollbar       { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c4c4c4; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #9a9a9a; }
+
+/* ─── SHIMMER KEYFRAME ───────────────────────────────────────
+   Used by .skeleton to animate loading placeholders. */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(24px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes heartPop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.45); }
+  100% { transform: scale(1); }
+}
+
+/* ─── UTILITY CLASSES ────────────────────────────────────────*/
+
+/* Skeleton loader — animated shimmer placeholder */
+.skeleton {
+  background: linear-gradient(90deg, #e8eaed 25%, #f5f5f5 50%, #e8eaed 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 8px;
+}
+
+/* Glass morphism effect — frosted panel */
+.glass {
+  background: rgba(255, 255, 255, 0.80);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* Heart animation for like button */
+.heart-pop {
+  animation: heartPop 0.3s ease-out;
+}
+
+/* Slide up entrance animation */
+.slide-up {
+  animation: slideUp 0.4s ease-out both;
+}
+
+/* Cabana brand card */
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.04);
+}
+
+/* Primary CTA button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #3b93f3;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+  box-shadow: 0 4px 14px rgba(59,147,243,0.30);
+}
+.btn-primary:hover   { background: #2474e8; box-shadow: 0 6px 18px rgba(59,147,243,0.45); }
+.btn-primary:active  { transform: scale(0.97); }
+
+/* Ghost button */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #e4e6eb;
+  color: #1c1e21;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.btn-ghost:hover   { background: #d8dadf; }
+.btn-ghost:active  { transform: scale(0.97); }
+
+/* Input field */
+.input-base {
+  width: 100%;
+  background: #f0f2f5;
+  border: 1px solid #dddfe2;
+  border-radius: 8px;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.9375rem;
+  color: #1c1e21;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.input-base:focus {
+  border-color: #3b93f3;
+  box-shadow: 0 0 0 3px rgba(59,147,243,0.18);
+  background: #fff;
+}
+.input-base::placeholder { color: #8a8d91; }
+
+/* ─── LAYOUT ─────────────────────────────────────────────────*/
+
+/* Push content below fixed navbar */
+.page-offset {
+  padding-top: var(--nav-height);
+  min-height: 100vh;
+}
+
+/* Three-column feed layout matching Facebook's structure */
+.feed-layout {
+  display: grid;
+  grid-template-columns: 360px 1fr 360px;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+  align-items: start;  /* Columns don't stretch to equal height */
+}
+
+/* Sticky sidebar column helper */
+.sidebar-sticky {
+  position: sticky;
+  top: calc(var(--nav-height) + 1rem);
+  max-height: calc(100vh - var(--nav-height) - 2rem);
+  overflow-y: auto;
+  scrollbar-width: none;  /* Hide scrollbar on Firefox */
+}
+.sidebar-sticky::-webkit-scrollbar { display: none; }
+
+/* Responsive: collapse sidebars on medium/small screens */
+@media (max-width: 1100px) {
+  .feed-layout { grid-template-columns: 280px 1fr; }
+}
+@media (max-width: 768px) {
+  .feed-layout {
+    grid-template-columns: 1fr;
+    max-width: 680px;
+    padding: 1rem 0.5rem 2rem;
+  }
+}

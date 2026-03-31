@@ -1,0 +1,47 @@
+# ============================================================
+# NETLIFY CONFIG — Cabana-Book
+# Tells Netlify how to build and serve the React SPA.
+# ============================================================
+
+[build]
+  # Directory that holds the project source
+  base = "."
+  # Build command: Vite compiles TypeScript + bundles assets
+  command = "npm run build"
+  # Directory to publish (what Netlify serves)
+  publish = "dist"
+
+[build.environment]
+  # Node version — must be >= 18 for Vite 5
+  NODE_VERSION = "20"
+
+# ── SPA Redirect ──────────────────────────────────────────────
+# React Router uses client-side routing (history API).
+# Without this rule, refreshing /feed or /profile/:id would
+# return a 404 from Netlify because there's no physical file.
+# This rule rewrites ALL requests to index.html so React
+# Router can handle the path.
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
+
+# ── Security Headers ──────────────────────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Prevent clickjacking
+    X-Frame-Options = "DENY"
+    # Stop MIME-sniffing attacks
+    X-Content-Type-Options = "nosniff"
+    # Force HTTPS
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    # Limit referrer info leaked to external sites
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# ── Asset Cache ───────────────────────────────────────────────
+# Vite hashes JS/CSS filenames — safe to cache aggressively
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
