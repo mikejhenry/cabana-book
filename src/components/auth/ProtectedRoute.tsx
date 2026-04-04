@@ -23,7 +23,7 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
       <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-surface-bg">
         <CabanaLogo size={64} animate />
         <LoadingSpinner size={28} />
-        <p className="text-gray-500 text-sm">Loading Cabana-Book...</p>
+        <p className="text-gray-500 text-sm">Loading Cabanabook...</p>
       </div>
     )
   }
