@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 // ============================================================
-// VITE CONFIG — Cabana-Book
+// VITE CONFIG — CabanaBook
 // Sets up React, path aliases (@/ → src/), and build output.
 // ============================================================
 export default defineConfig({
