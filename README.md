@@ -1,4 +1,4 @@
-# 🏖️ Cabana-Book
+# 🏖️ CabanaBook
 
 > A premium Facebook-inspired social media platform — built to showcase full-stack AI-assisted development at a professional level.
 
@@ -6,7 +6,7 @@
 
 ## ✨ Vision & Purpose
 
-**Cabana-Book** is a fully-featured social media web application modeled after Facebook's core infrastructure, rebuilt with a clean tropical-blue aesthetic and modern tooling. It was created as a **portfolio project** to demonstrate that real-world, production-quality applications can be designed and built efficiently through clear, intentional collaboration between a developer and AI tooling.
+**CabanaBook** is a fully-featured social media web application modeled after Facebook's core infrastructure, rebuilt with a clean tropical-blue aesthetic and modern tooling. It was created as a **portfolio project** to demonstrate that real-world, production-quality applications can be designed and built efficiently through clear, intentional collaboration between a developer and AI tooling.
 
 ### 🤝 How This Project Was Built — Human-AI Collaboration
 
