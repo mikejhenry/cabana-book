@@ -1,6 +1,6 @@
 // ============================================================
 // AUTH STORE — Zustand
-// Global authentication state for Cabana-Book.
+// Global authentication state for CabanaBook.
 // Zustand is a lightweight alternative to Redux — one store,
 // no boilerplate, works perfectly with React hooks.
 //
