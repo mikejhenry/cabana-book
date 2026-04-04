@@ -93,7 +93,7 @@ export default function SignupPage() {
         {/* Header */}
         <div className="flex flex-col items-center mb-8">
           <CabanaLogo size={56} animate className="mb-3" />
-          <h1 className="font-display font-bold text-2xl text-gray-900">Join Cabana-Book</h1>
+          <h1 className="font-display font-bold text-2xl text-gray-900">Join CabanaBook</h1>
           <p className="text-gray-500 text-sm mt-1">It's free and always will be.</p>
         </div>
 
