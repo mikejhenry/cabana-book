@@ -62,7 +62,7 @@ export default function Navbar() {
               className="font-display font-bold text-cabana-600 hidden lg:block"
               style={{ fontSize: '1.25rem' }}
             >
-              Cabana-Book
+              Cabanabook
             </span>
           </Link>
 
@@ -73,7 +73,7 @@ export default function Navbar() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search Cabana-Book"
+              placeholder="Search Cabanabook"
               className="input-base pl-9 w-56 h-9 text-sm rounded-full"
             />
           </div>
