@@ -1,6 +1,6 @@
 // ============================================================
 // CabanaLogo — Inline SVG React Component
-// Renders the Cabana-Book circular beach-hut logo.
+// Renders the CabanaBook circular beach-hut logo.
 // Using an inline SVG (vs <img>) lets us animate it with CSS/Framer
 // and control colors via props. The logo is identical to
 // /public/cabana-logo.svg but as a reusable React component.
@@ -25,7 +25,7 @@ export default function CabanaLogo({
       height={size}
       // The "animate-wave" class is defined in tailwind.config.js
       className={`${animate ? 'animate-wave' : ''} ${className} select-none`}
-      aria-label="Cabana-Book logo"
+      aria-label="CabanaBook logo"
       role="img"
     >
       <defs>
