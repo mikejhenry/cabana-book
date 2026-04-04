@@ -1,5 +1,5 @@
 // ============================================================
-// TYPES — Cabana-Book
+// TYPES — CabanaBook
 // Central TypeScript interfaces that mirror the Supabase
 // database schema. Every component imports from here so
 // shape changes only need to happen in one place.
