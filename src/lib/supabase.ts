@@ -1,5 +1,5 @@
 // ============================================================
-// SUPABASE CLIENT — Cabana-Book
+// SUPABASE CLIENT — CabanaBook
 // Creates the singleton Supabase client used throughout the app.
 // Import `supabase` from here wherever you need DB access.
 //
@@ -17,7 +17,7 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string
 // Validate that env vars are present at startup to catch config mistakes early
 if (!supabaseUrl || !supabaseAnonKey) {
   throw new Error(
-    '[Cabana-Book] Missing Supabase env vars. ' +
+    '[CabanaBook] Missing Supabase env vars. ' +
     'Make sure VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are set in your .env file.'
   )
 }
