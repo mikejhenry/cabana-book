@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 // ============================================================
-// TAILWIND CONFIG — Cabana-Book Design System
+// TAILWIND CONFIG — CabanaBook Design System
 // Extends Tailwind with custom colors, fonts, and animations
 // for a premium social media aesthetic.
 // ============================================================
