@@ -157,7 +157,7 @@ export default function LandingPage() {
                   className="font-display font-bold leading-none"
                   style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}
                 >
-                  Cabana-Book
+                  CabanaBook
                 </h1>
                 <p className="text-cyan-200 text-sm font-medium tracking-wide mt-1">
                   Your social paradise
@@ -172,7 +172,7 @@ export default function LandingPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
             >
-              Connect with friends and the world around you on <strong className="font-semibold text-white">Cabana-Book</strong>.
+              Connect with friends and the world around you on <strong className="font-semibold text-white">CabanaBook</strong>.
             </motion.p>
 
             {/* Feature list */}
@@ -274,7 +274,7 @@ export default function LandingPage() {
             </Link>
 
             <p className="text-xs text-gray-400 text-center mt-6 leading-relaxed">
-              By continuing, you agree to Cabana-Book's Terms of Service and Privacy Policy.
+              By continuing, you agree to CabanaBook's Terms of Service and Privacy Policy.
             </p>
           </motion.div>
         </div>
@@ -343,7 +343,7 @@ export default function LandingPage() {
       <footer className="bg-surface-bg py-10 px-6 text-center text-gray-400 text-xs">
         <div className="flex items-center justify-center gap-2 mb-3">
           <CabanaLogo size={24} />
-          <span className="font-display font-bold text-gray-600 text-sm">Cabana-Book</span>
+          <span className="font-display font-bold text-gray-600 text-sm">CabanaBook</span>
         </div>
         <p className="mb-2">
           {/* NOTE: Replace "Coding Cabana CEO" with your real name when ready */}
