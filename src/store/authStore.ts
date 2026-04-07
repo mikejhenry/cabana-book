@@ -38,7 +38,7 @@ interface AuthState {
 }
 
 // ─── STORE DEFINITION ────────────────────────────────────────
-export const useAuthStore = create<AuthState>((set, get) => ({
+export const useAuthStore = create<AuthState>((set) => ({
   user:    null,
   session: null,
   profile: null,
@@ -87,25 +87,30 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   },
 
   // ── signUp ──────────────────────────────────────────────────
+  // We no longer manually INSERT into profiles here.
+  // Instead, a SECURITY DEFINER trigger on auth.users
+  // (see migration 002) auto-creates the profile row the moment
+  // Supabase creates the auth user — bypassing RLS entirely.
+  //
+  // We pass full_name and username via options.data so the trigger
+  // can read them from NEW.raw_user_meta_data.
   signUp: async (email, password, fullName, username) => {
-    // Step 1: Create the auth user
-    const { data, error } = await supabase.auth.signUp({ email, password })
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        // raw_user_meta_data — readable by the trigger function
+        data: {
+          full_name: fullName,
+          username:  username.toLowerCase().replace(/\s+/g, '_'),
+        },
+      },
+    })
+
     if (error) throw error
     if (!data.user) throw new Error('Sign up failed — no user returned.')
-
-    // Step 2: Insert a matching profile row
-    // This is safe to do client-side because RLS policies on the
-    // `profiles` table only allow INSERT when auth.uid() matches the id.
-    const { error: profileError } = await supabase
-      .from('profiles')
-      .insert({
-        id:         data.user.id,  // Must match auth user ID
-        email:      email,
-        full_name:  fullName,
-        username:   username.toLowerCase().replace(/\s+/g, '_'),
-      })
-
-    if (profileError) throw profileError
+    // Profile row is created automatically by the DB trigger.
+    // onAuthStateChange will load it once the session is active.
   },
 
   // ── signIn ──────────────────────────────────────────────────
